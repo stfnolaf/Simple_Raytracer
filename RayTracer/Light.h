@@ -19,19 +19,8 @@ public:
 	Light(Vect, Color);
 
 	//method functions
-	virtual Vect getLightPos() { return pos; }
-	virtual Color getLightColor() { return color; }
+	virtual Vect getLightPos();
+	virtual Color getLightColor();
 
 };
-
-Light::Light() {
-	pos = Vect(0, 0, 0);
-	color = Color(1, 1, 1, 0);
-}
-
-Light::Light(Vect p, Color c) {
-	pos = p;
-	color = c;
-}
-
 #endif

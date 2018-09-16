@@ -15,51 +15,23 @@ public:
 	Vect(double, double, double);
 
 	//functions
-	double getX() { return x; }
-	double getY() { return y; }
-	double getZ() { return z; }
+	double getX();
+	double getY();
+	double getZ();
 
-	double magnitude() {
-		return sqrt((x*x) + (y*y) + (z*z));
-	}
+	double magnitude();
 
-	Vect normalize() {
-		double magnitude = this->magnitude();
-		return Vect(x / magnitude, y / magnitude, z / magnitude);
-	}
+	Vect normalize();
 
-	Vect negative() {
-		return Vect(-x, -y, -z);
-	}
+	Vect negative();
 
-	double dot(Vect v) {
-		return x * v.getX() + y * v.getY() + z * v.getZ();
-	}
+	double dot(Vect v);
 
-	Vect cross(Vect v) {
-		return Vect(y*v.getZ() - z * v.getY(), z*v.getX() - x * v.getZ(), x*v.getY() - y * v.getX());
-	}
+	Vect cross(Vect v);
 
-	Vect add(Vect v) {
-		return Vect(x + v.getX(), y + v.getY(), z + v.getZ());
-	}
+	Vect add(Vect v);
 
-	Vect multiply(double scalar) {
-		return Vect(x*scalar, y*scalar, z*scalar);
-	}
+	Vect multiply(double scalar);
 
 };
-
-Vect::Vect() {
-	x = 0;
-	y = 0;
-	z = 0;
-}
-
-Vect::Vect(double j, double k, double l) {
-	x = j;
-	y = k;
-	z = l;
-}
-
 #endif

@@ -16,19 +16,9 @@ public:
 	Ray(Vect, Vect);
 
 	//method functions
-	Vect getRayOrigin() { return origin; }
-	Vect getRayDir() { return dir; }
+	Vect getRayOrigin();
+	Vect getRayDir();
 
 };
-
-Ray::Ray() {
-	origin = Vect(0, 0, 0);
-	dir = Vect(1, 0, 0);
-}
-
-Ray::Ray(Vect o, Vect d) {
-	origin = o;
-	dir = d;
-}
 
 #endif

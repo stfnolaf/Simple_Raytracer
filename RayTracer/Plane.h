@@ -21,40 +21,13 @@ public:
 	Plane(Vect, double, Color);
 
 	//method functions
-	Vect getPlaneNormal() { return normal; }
-	double getPlaneDist() { return dist; }
-	virtual Color getColor() { return color; }
+	Vect getNormal();
+	double getPlaneDist();
+	virtual Color getColor();
 
-	virtual Vect getNormalAt(Vect point) {
-		return normal;
-	}
+	virtual Vect getNormalAt(Vect point);
 
-	virtual double findIntersection(Ray ray) {
-		Vect ray_dir = ray.getRayDir();
-
-		double a = ray_dir.dot(normal);
-
-		if (a == 0) {
-			return -1;
-		}
-		else {
-			double b = normal.dot(ray.getRayOrigin().add((normal.negative()).multiply(dist)));
-			return -1 * b / a;
-		}
-	}
+	virtual double findIntersection(Ray ray);
 
 };
-
-Plane::Plane() {
-	normal = Vect(1, 0, 0);
-	dist = 0;
-	color = Color(0.5, 0.5, 0.5, 0);
-}
-
-Plane::Plane(Vect n, double d, Color c) {
-	normal = n;
-	dist = d;
-	color = c;
-}
-
 #endif

@@ -13,18 +13,11 @@ public:
 	Object();
 
 	//method functions
-	virtual Color getColor() { return Color (0.0, 0.0, 0.0, 0.0); }
+	virtual Color getColor();
 
-	virtual Vect getNormalAt(Vect pos) {
-		return Vect(0, 0, 0);
-	}
+	virtual Vect getNormalAt(Vect pos);
 
-	virtual double findIntersection(Ray ray) {
-		return 0;
-	}
+	virtual double findIntersection(Ray ray);
 
 };
-
-Object::Object() {}
-
 #endif

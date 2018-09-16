@@ -11,12 +11,9 @@ class Source {
 public:
 	Source();
 	
-	virtual Vect getLightPos() { return Vect(0, 0, 0); }
+	virtual Vect getLightPos();
 
-	virtual Color getLightColor() { return Color(1, 1, 1, 0); }
+	virtual Color getLightColor();
 
 };
-
-Source::Source() {}
-
 #endif
