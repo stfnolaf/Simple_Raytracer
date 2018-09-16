@@ -5,67 +5,67 @@
 
 #include "math.h"
 #include "Object.h"
-#include "glm/glm.hpp"
+#include "Vect.h"
 #include "Color.h"
 
 class Sphere : public Object {
 
-	glm::vec3 pos;
-	float radius;
+	Vect pos;
+	double radius;
 	Color color;
 
 public:
 
 	Sphere();
 
-	Sphere(glm::vec3, float, Color);
+	Sphere(Vect, double, Color);
 
 	//method functions
-	glm::vec3 getSpherePos() { return pos; }
-	float getSphereRadius() { return radius; }
+	Vect getSpherePos() { return pos; }
+	double getSphereRadius() { return radius; }
 	virtual Color getColor() { return color; }
 
-	virtual glm::vec3 getNormalAt(glm::vec3 point) {
+	virtual Vect getNormalAt(Vect point) {
 		// normal always points away from center
-		glm::vec3 normalVector = glm::normalize(point - pos);
+		Vect normalVector = point.add(pos.negative()).normalize();
 		return normalVector;
 	}
 
-	virtual float findIntersection(Ray ray) {
-		glm::vec3 rayOrigin = ray.getRayOrigin();
-		float rayOriginX = rayOrigin.x;
-		float rayOriginY = rayOrigin.y;
-		float rayOriginZ = rayOrigin.z;
+	virtual double findIntersection(Ray ray) {
+		Vect rayOrigin = ray.getRayOrigin();
+		double rayOriginX = rayOrigin.getX();
+		double rayOriginY = rayOrigin.getY();
+		double rayOriginZ = rayOrigin.getZ();
 
-		glm::vec3 rayDir = ray.getRayDir();
-		float rayDirX = rayDir.x;
-		float rayDirY = rayDir.y;
-		float rayDirZ = rayDir.z;
+		Vect rayDir = ray.getRayDir();
+		double rayDirX = rayDir.getX();
+		double rayDirY = rayDir.getY();
+		double rayDirZ = rayDir.getZ();
 
-		glm::vec3 spherePos = pos;
-		float spherePosX = spherePos.x;
-		float spherePosY = spherePos.y;
-		float spherePosZ = spherePos.z;
+		Vect spherePos = pos;
+		double spherePosX = spherePos.getX();
+		double spherePosY = spherePos.getY();
+		double spherePosZ = spherePos.getZ();
 
-		float a = 1.0f;
-		float b = (2.0f * (rayOriginX - spherePosX)*rayDirX) + (2.0f * (rayOriginY - spherePosY)*rayDirY) + (2.0f * (rayOriginZ - spherePosZ)*rayDirZ);
-		float c = pow(rayOriginX - spherePosX, 2.0f) + pow(rayOriginY - spherePosY, 2.0f) + pow(rayOriginZ - spherePosZ, 2.0f) - (radius*radius);
+		double a = 1;
+		double b = (2 * (rayOriginX - spherePosX)*rayDirX) + (2 * (rayOriginY - spherePosY)*rayDirY) + (2 * (rayOriginZ - spherePosZ)*rayDirZ);
+		double c = pow(rayOriginX - spherePosX, 2) + pow(rayOriginY - spherePosY, 2) + pow(rayOriginZ - spherePosZ, 2) - (radius*radius);
 
-		float discriminant = b * b - 4 * c;
+		double discriminant = b * b - 4 * c;
 
-		if (discriminant > 0.0f) {
-			float root1 = ((-1 * b - sqrt(discriminant)) / 2.0f) /*- 0.000001f*/;
+		if (discriminant > 0) {
+			double root1 = ((-1 * b - sqrt(discriminant)) / 2) - 0.000001;
 			
-			if (root1 > 0.0f) {
+			if (root1 > 0) {
 				return root1;
 			}
 			else {
-				float root2 = ((sqrt(discriminant) - b) / 2.0f) /*- 0.000001f*/;
+				double root2 = ((sqrt(discriminant) - b) / 2) - 0.000001;
 				return root2;
 			}
 		}
 		else {
-			return -1.0f;
+			return -1;
 		}
 
 	}
@@ -73,12 +73,12 @@ public:
 };
 
 Sphere::Sphere() {
-	pos = glm::vec3(0.0f, 0.0f, 0.0f);
-	radius = 1.0;
-	color = Color(0.5f, 0.5f, 0.5f, 0.0f);
+	pos = Vect(0, 0, 0);
+	radius = 1;
+	color = Color(0.5, 0.5, 0.5, 0);
 }
 
-Sphere::Sphere(glm::vec3 p, float r, Color c) {
+Sphere::Sphere(Vect p, double r, Color c) {
 	pos = p;
 	radius = r;
 	color = c;

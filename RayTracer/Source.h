@@ -3,7 +3,7 @@
 #ifndef _SOURCE_H
 #define _SOURCE_H
 
-#include "glm/glm.hpp"
+#include "Vect.h"
 #include "Color.h"
 
 class Source {
@@ -11,9 +11,9 @@ class Source {
 public:
 	Source();
 	
-	virtual glm::vec3 getLightPos() { return glm::vec3(0.0f, 0.0f, 0.0f); }
+	virtual Vect getLightPos() { return Vect(0, 0, 0); }
 
-	virtual Color getLightColor() { return Color(1.0f, 1.0f, 1.0f, 0.0f); }
+	virtual Color getLightColor() { return Color(1, 1, 1, 0); }
 
 };
 

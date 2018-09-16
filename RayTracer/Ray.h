@@ -3,30 +3,30 @@
 #ifndef _RAY_H
 #define _RAY_H
 
-#include "glm/glm.hpp"
+#include "Vect.h"
 
 class Ray {
 
-	glm::vec3 origin, dir;
+	Vect origin, dir;
 
 public:
 
 	Ray();
 
-	Ray(glm::vec3, glm::vec3);
+	Ray(Vect, Vect);
 
 	//method functions
-	glm::vec3 getRayOrigin() { return origin; }
-	glm::vec3 getRayDir() { return dir; }
+	Vect getRayOrigin() { return origin; }
+	Vect getRayDir() { return dir; }
 
 };
 
 Ray::Ray() {
-	origin = glm::vec3(0.0f, 0.0f, 0.0f);
-	dir = glm::vec3(1.0f, 0.0f, 0.0f);
+	origin = Vect(0, 0, 0);
+	dir = Vect(1, 0, 0);
 }
 
-Ray::Ray(glm::vec3 o, glm::vec3 d) {
+Ray::Ray(Vect o, Vect d) {
 	origin = o;
 	dir = d;
 }

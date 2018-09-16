@@ -7,30 +7,30 @@
 
 class Color {
 
-	float red, green, blue, special;
+	double red, green, blue, special;
 
 public:
 
 	Color();
 
-	Color(float, float, float, float);
+	Color(double, double, double, double);
 
 	//method functions
-	float getColorRed() { return red; }
-	float getColorGreen() { return green; }
-	float getColorBlue() { return blue; }
-	float getColorSpecial() { return special; }
+	double getColorRed() { return red; }
+	double getColorGreen() { return green; }
+	double getColorBlue() { return blue; }
+	double getColorSpecial() { return special; }
 
-	void setColorRed(float redVal) { red = redVal; };
-	void setColorGreen(float greenVal) { green = greenVal; };
-	void setColorBlue(float blueVal) { blue = blueVal; };
-	void setColorSpecial(float specialVal) { special = specialVal; };
+	void setColorRed(double redVal) { red = redVal; };
+	void setColorGreen(double greenVal) { green = greenVal; };
+	void setColorBlue(double blueVal) { blue = blueVal; };
+	void setColorSpecial(double specialVal) { special = specialVal; };
 
-	float brightness() {
+	double brightness() {
 		return (red + green + blue) / 3;
 	}
 
-	Color colorScalar(float scalar) {
+	Color colorScalar(double scalar) {
 		return Color(red*scalar, green*scalar, blue*scalar, special);
 	}
 
@@ -48,18 +48,18 @@ public:
 
 	Color clip() {
 		double alllight = red + green + blue;
-		double excesslight = alllight - 3.0f;
-		if (excesslight > 0.0f) {
+		double excesslight = alllight - 3;
+		if (excesslight > 0) {
 			red = red + excesslight * (red / alllight);
 			green = green + excesslight * (green / alllight);
 			blue = blue + excesslight * (blue / alllight);
 		}
-		if (red > 1.0f) { red = 1.0f; }
-		if (green > 1.0f) { green = 1.0f; }
-		if (blue > 1.0f) { blue = 1.0f; }
-		if (red < 0.0f) { red = 0.0f; }
-		if (green < 0.0f) { green = 0.0f; }
-		if (blue < 0.0f) { blue = 0.0f; }
+		if (red > 1) { red = 1; }
+		if (green > 1) { green = 1; }
+		if (blue > 1) { blue = 1; }
+		if (red < 0) { red = 0; }
+		if (green < 0) { green = 0; }
+		if (blue < 0) { blue = 0; }
 
 		return Color(red, green, blue, special);
 
@@ -68,12 +68,12 @@ public:
 };
 
 Color::Color() {
-	red = 0.5f;
-	green = 0.5f;
-	blue = 0.5f;
+	red = 0.5;
+	green = 0.5;
+	blue = 0.5;
 }
 
-Color::Color(float r, float g, float b, float s) {
+Color::Color(double r, double g, double b, double s) {
 	red = r;
 	green = g;
 	blue = b;

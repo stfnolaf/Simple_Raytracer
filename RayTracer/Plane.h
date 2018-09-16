@@ -5,53 +5,53 @@
 
 #include "math.h"
 #include "Object.h"
-#include "glm/glm.hpp"
+#include "Vect.h"
 #include "Color.h"
 
 class Plane : public Object {
 
-	glm::vec3 normal;
-	float dist;
+	Vect normal;
+	double dist;
 	Color color;
 
 public:
 
 	Plane();
 
-	Plane(glm::vec3, float, Color);
+	Plane(Vect, double, Color);
 
 	//method functions
-	glm::vec3 getPlaneNormal() { return normal; }
-	float getPlaneDist() { return dist; }
+	Vect getPlaneNormal() { return normal; }
+	double getPlaneDist() { return dist; }
 	virtual Color getColor() { return color; }
 
-	virtual glm::vec3 getNormalAt(glm::vec3 point) {
+	virtual Vect getNormalAt(Vect point) {
 		return normal;
 	}
 
-	virtual float findIntersection(Ray ray) {
-		glm::vec3 ray_dir = ray.getRayDir();
+	virtual double findIntersection(Ray ray) {
+		Vect ray_dir = ray.getRayDir();
 
-		float a = glm::dot(ray_dir, normal);
+		double a = ray_dir.dot(normal);
 
 		if (a == 0) {
-			return -1.0f;
+			return -1;
 		}
 		else {
-			float b = glm::dot(normal, (ray.getRayOrigin() + (dist * -normal)));
-			return -1.0f * b / a;
+			double b = normal.dot(ray.getRayOrigin().add((normal.negative()).multiply(dist)));
+			return -1 * b / a;
 		}
 	}
 
 };
 
 Plane::Plane() {
-	normal = glm::vec3(1.0f, 0.0f, 0.0f);
-	dist = 0.0f;
+	normal = Vect(1, 0, 0);
+	dist = 0;
 	color = Color(0.5, 0.5, 0.5, 0);
 }
 
-Plane::Plane(glm::vec3 n, float d, Color c) {
+Plane::Plane(Vect n, double d, Color c) {
 	normal = n;
 	dist = d;
 	color = c;

@@ -4,34 +4,34 @@
 #ifndef _CAMERA_H
 #define _CAMERA_H
 
-#include "glm/glm.hpp"
+#include "Vect.h"
 
 class Camera {
 
-	glm::vec3 pos, dir, right, up;
+	Vect pos, dir, right, up;
 
 public:
 
 	Camera();
 
-	Camera(glm::vec3, glm::vec3, glm::vec3, glm::vec3);
+	Camera(Vect, Vect, Vect, Vect);
 
 	//method functions
-	glm::vec3 getCameraPos() { return pos; }
-	glm::vec3 getCameraDir() { return dir; }
-	glm::vec3 getCameraRight() { return right; }
-	glm::vec3 getCameraUp() { return up; }
+	Vect getCameraPos() { return pos; }
+	Vect getCameraDir() { return dir; }
+	Vect getCameraRight() { return right; }
+	Vect getCameraUp() { return up; }
 
 };
 
 Camera::Camera() {
-	pos = glm::vec3(0.0f, 0.0f, 0.0f);
-	dir = glm::vec3(0.0f, 0.0f, 1.0f);
-	right = glm::vec3(0.0f, 0.0f, 0.0f);
-	up = glm::vec3(0.0f, 0.0f, 0.0f);
+	pos = Vect(0, 0, 0);
+	dir = Vect(0, 0, 1);
+	right = Vect(0, 0, 0);
+	up = Vect(0, 0, 0);
 }
 
-Camera::Camera(glm::vec3 p, glm::vec3 d, glm::vec3 r, glm::vec3 u) {
+Camera::Camera(Vect p, Vect d, Vect r, Vect u) {
 	pos = p;
 	dir = d;
 	right = r;

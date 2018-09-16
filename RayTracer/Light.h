@@ -4,32 +4,32 @@
 #define _LIGHT_h
 
 #include "Source.h"
-#include "glm/glm.hpp"
+#include "Vect.h"
 #include "Color.h"
 
 class Light : public Source {
 
-	glm::vec3 pos;
+	Vect pos;
 	Color color;
 
 public:
 
 	Light();
 
-	Light(glm::vec3, Color);
+	Light(Vect, Color);
 
 	//method functions
-	virtual glm::vec3 getLightPos() { return pos; }
+	virtual Vect getLightPos() { return pos; }
 	virtual Color getLightColor() { return color; }
 
 };
 
 Light::Light() {
-	pos = glm::vec3(0.0f, 0.0f, 0.0f);
+	pos = Vect(0, 0, 0);
 	color = Color(1, 1, 1, 0);
 }
 
-Light::Light(glm::vec3 p, Color c) {
+Light::Light(Vect p, Color c) {
 	pos = p;
 	color = c;
 }
